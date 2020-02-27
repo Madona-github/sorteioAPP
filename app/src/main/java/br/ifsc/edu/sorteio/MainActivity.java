@@ -4,31 +4,32 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-public class MainActivity extends AppCompatActivity {
+import java.util.Random;
 
-    EditText editTextInical, editTextFinal;
-    TextView textViewResultado;
+public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        editTextInical = findViewById(R.id.editTextInicial);
-        editTextFinal = findViewById(R.id.editTextFinal);
-        textViewResultado = findViewById(R.id.textViewResultado);
-
-
     }
 
     public void sortear(View view) {
 
-        int inicial = Integer.parseInt(editTextInical.getText().toString());
+       TextView textView = findViewById(R.id.textViewResultado);
+       EditText editTextInicial = findViewById(R.id.numInicial);
+       EditText editTextFinal = findViewById(R.id.numFinal);
 
-        textViewResultado.setText(Integer.toString(inicial));
+       int valorInicial = Integer.parseInt (editTextInicial.getText().toString());
+       int valorFinal = Integer.parseInt (editTextFinal.getText().toString());
+       int numeroSorteado  = new Random().nextInt( valorFinal-valorInicial)+valorInicial;
+
+       textView.setText(Integer.toString(numeroSorteado));
 
     }
 }
